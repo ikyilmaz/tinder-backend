@@ -6,14 +6,14 @@ import UserSchema from './user.schema';
 import { PubSub } from 'graphql-subscriptions';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
-
+  imports: [MongooseModule.forFeature([{ name: 'User', schema: UserSchema }])],
+  providers: [
+    UserService,
+    UserResolver,
+    {
+      provide: 'PUB_SUB',
+      useValue: new PubSub(),
+    },
   ],
-  providers: [UserService, UserResolver, {
-    provide: 'PUB_SUB',
-    useValue: new PubSub(),
-  }],
 })
-export class UserModule {
-}
+export class UserModule {}
