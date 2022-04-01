@@ -5,7 +5,6 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
-import { IUser } from 'src/modules/user/user.interface';
 import { Model } from 'mongoose';
 import {
   LoginReturnType,
@@ -14,6 +13,7 @@ import {
   RegisterType,
 } from './auth.graphql';
 import * as bcrypt from 'bcryptjs';
+import { IUser } from 'src/shared/interfaces/user.interface';
 
 @Injectable()
 export class AuthService {
