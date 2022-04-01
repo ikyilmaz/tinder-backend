@@ -23,6 +23,7 @@ type Query {
 
   """Verilen ID'ye sahip kullanıcıyı bulur..."""
   findOneUser(data: GetUserInputType!): PublicUserType!
+  me: PublicUserType!
   login(data: LoginType!): LoginReturnType!
 }
 
