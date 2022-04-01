@@ -13,7 +13,7 @@ import {
   RegisterType,
 } from './auth.graphql';
 import * as bcrypt from 'bcryptjs';
-import { IUser } from 'src/shared/interfaces/user.interface';
+import { IUser } from 'src/modules/user/user.interface';
 
 @Injectable()
 export class AuthService {
