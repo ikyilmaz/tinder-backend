@@ -6,6 +6,7 @@ import { join } from 'path';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserResolver } from './modules/user/user.resolver';
 import { UserModule } from './modules/user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { UserModule } from './modules/user/user.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     UserModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
