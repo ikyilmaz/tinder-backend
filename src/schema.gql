@@ -2,6 +2,7 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""Herkese açık kullanıcı tipi"""
 type PublicUserType {
   id: ID!
   username: String!
@@ -27,6 +28,7 @@ type Query {
   login(data: LoginType!): LoginReturnType!
 }
 
+"""ID'sine bağlı kullanıcı sorgusu yaparken kullanılacak giriş tipi..."""
 input GetUserInputType {
   _id: ID!
 }
@@ -48,11 +50,13 @@ type Mutation {
   register(data: RegisterType!): RegisterReturnType!
 }
 
+"""Kullanıcı oluştururken kullanılacak giriş tipi..."""
 input CreateUserInputType {
   username: String!
   password: String!
 }
 
+"""Kullanıcı güncellerken kullanılacak giriş tipi..."""
 input UpdateUserInputType {
   _id: ID!
   username: String

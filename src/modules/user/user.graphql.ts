@@ -1,7 +1,9 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
 import { IsAlpha, IsOptional, Length } from 'class-validator';
 
-@ObjectType()
+@ObjectType({
+  description: 'Herkese açık kullanıcı tipi',
+})
 export class PublicUserType {
   @Field(() => ID)
   id: string;
@@ -10,13 +12,18 @@ export class PublicUserType {
   username: string;
 }
 
-@InputType()
+@InputType({
+  description:
+    "ID'sine bağlı kullanıcı sorgusu yaparken kullanılacak giriş tipi...",
+})
 export class GetUserInputType {
   @Field(() => ID)
   _id: string;
 }
 
-@InputType()
+@InputType({
+  description: 'Kullanıcı oluştururken kullanılacak giriş tipi...',
+})
 export class CreateUserInputType {
   @Field(() => String, { nullable: false })
   @IsAlpha()
@@ -28,7 +35,9 @@ export class CreateUserInputType {
   password: string;
 }
 
-@InputType()
+@InputType({
+  description: 'Kullanıcı güncellerken kullanılacak giriş tipi...',
+})
 export class UpdateUserInputType {
   @Field(() => ID, { nullable: false })
   _id: string;
