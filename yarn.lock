@@ -1012,6 +1012,13 @@
     "@types/connect" "*"
     "@types/node" "*"
 
+"@types/chalk@^2.2.0":
+  "integrity" "sha512-1zzPV9FDe1I/WHhRkf9SNgqtRJWZqrBWgu7JGveuHmmyR9CnAPCie2N/x+iHrgnpYBIcCJWHBoMRv2TRWktsvw=="
+  "resolved" "https://registry.npmjs.org/@types/chalk/-/chalk-2.2.0.tgz"
+  "version" "2.2.0"
+  dependencies:
+    "chalk" "*"
+
 "@types/connect@*":
   "integrity" "sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ=="
   "resolved" "https://registry.npmjs.org/@types/connect/-/connect-3.4.35.tgz"
@@ -1993,6 +2000,11 @@
   "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001323.tgz"
   "version" "1.0.30001323"
 
+"chalk@*", "chalk@^5.0.1":
+  "integrity" "sha512-Fo07WOYGqMfCWHOzSXOt2CxDbC6skS/jO9ynEcmpANMoPrD+W1r1K6Vx7iNm+AQmETU1Xr2t+n8nzkV9t6xh3w=="
+  "resolved" "https://registry.npmjs.org/chalk/-/chalk-5.0.1.tgz"
+  "version" "5.0.1"
+
 "chalk@^2.0.0":
   "integrity" "sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ=="
   "resolved" "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz"
@@ -2002,7 +2014,23 @@
     "escape-string-regexp" "^1.0.5"
     "supports-color" "^5.3.0"
 
-"chalk@^4.0.0", "chalk@^4.1.0", "chalk@^4.1.1":
+"chalk@^4.0.0":
+  "integrity" "sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA=="
+  "resolved" "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
+  "version" "4.1.2"
+  dependencies:
+    "ansi-styles" "^4.1.0"
+    "supports-color" "^7.1.0"
+
+"chalk@^4.1.0":
+  "integrity" "sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA=="
+  "resolved" "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
+  "version" "4.1.2"
+  dependencies:
+    "ansi-styles" "^4.1.0"
+    "supports-color" "^7.1.0"
+
+"chalk@^4.1.1":
   "integrity" "sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA=="
   "resolved" "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
   "version" "4.1.2"
