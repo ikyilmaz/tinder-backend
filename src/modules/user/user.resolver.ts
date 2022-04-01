@@ -7,8 +7,9 @@ import {
   GetUserInputType,
 } from './user.graphql';
 import { PubSub } from 'graphql-subscriptions';
-import { Inject } from '@nestjs/common';
+import { Inject, UseGuards } from '@nestjs/common';
 import { ParseMongoIdPipe } from 'src/pipes/parse-mongo-id.pipe';
+import { GqlAuthGuard } from 'src/guards/gql-auth.guard';
 // import { Auth } from '../../common/decorators/auth.decorator';
 
 @Resolver(() => PublicUserType)
@@ -17,11 +18,6 @@ export class UserResolver {
     @Inject('PUB_SUB') private readonly $pubSub: PubSub,
     private readonly usersService: UserService,
   ) {}
-
-  @Query(() => String)
-  sayHello() {
-    return 'hello';
-  }
 
   @Query(() => [PublicUserType])
   async users() {

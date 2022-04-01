@@ -4,7 +4,7 @@ import { IsAlpha, IsOptional, Length } from 'class-validator';
 @ObjectType()
 export class PublicUserType {
   @Field(() => ID)
-  _id: string;
+  id: string;
 
   @Field(() => String, { nullable: false })
   username: string;
