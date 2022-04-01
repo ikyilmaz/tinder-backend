@@ -18,7 +18,10 @@ type RegisterReturnType {
 }
 
 type Query {
+  """Tüm kullanıcıları bulur..."""
   findUsers: [PublicUserType!]!
+
+  """Verilen ID'ye sahip kullanıcıyı bulur..."""
   findOneUser(data: GetUserInputType!): PublicUserType!
   login(data: LoginType!): LoginReturnType!
 }
@@ -33,8 +36,13 @@ input LoginType {
 }
 
 type Mutation {
+  """Kullanıcı oluşturur. Rolüm admin değilse izin vermez."""
   createUser(data: CreateUserInputType!): PublicUserType!
+
+  """Kullanıcı günceller. Rolüm admin değilse izin vermez."""
   updateUser(data: UpdateUserInputType!): PublicUserType!
+
+  """Kullanıcı siler. Rolüm admin değilse izin vermez."""
   deleteUser(id: String!): String!
   register(data: RegisterType!): RegisterReturnType!
 }
@@ -56,5 +64,8 @@ input RegisterType {
 }
 
 type Subscription {
+  """
+  Kullanıcı oluşturma olayını takibe alır. Her kullanıcı oluşturulduğunda haberim olur. Rolüm admin değilse izin vermez.
+  """
   userCreated(token: String!): PublicUserType!
 }
