@@ -2,7 +2,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Auth } from 'src/decorators/auth.decorator';
 import { CurrentUser } from 'src/decorators/current-user.decorator';
 import { PublicUserType } from 'src/modules/user/user.graphql';
-import { IUser } from 'src/modules/user/user.interface';
+import { IUser } from 'src/shared/interfaces/user.interface';
 import {
   LoginReturnType,
   LoginType,
