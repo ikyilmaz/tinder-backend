@@ -18,8 +18,8 @@ type RegisterReturnType {
 }
 
 type Query {
-  users: [PublicUserType!]!
-  user(data: GetUserInputType!): PublicUserType!
+  findUsers: [PublicUserType!]!
+  findOneUser(data: GetUserInputType!): PublicUserType!
   login(data: LoginType!): LoginReturnType!
 }
 
