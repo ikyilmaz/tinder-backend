@@ -1,0 +1,38 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type PublicUserType {
+  _id: ID!
+  username: String!
+}
+
+type Query {
+  sayHello: String!
+  users: [PublicUserType!]!
+  user(data: GetUserInputType!): PublicUserType!
+}
+
+input GetUserInputType {
+  _id: ID!
+}
+
+type Mutation {
+  createUser(data: CreateUserInputType!): PublicUserType!
+  updateUser(data: UpdateUserInputType!): PublicUserType!
+  deleteUser(id: String!): String!
+}
+
+input CreateUserInputType {
+  username: String!
+  password: String!
+}
+
+input UpdateUserInputType {
+  _id: ID!
+  username: String
+}
+
+type Subscription {
+  userCreated(token: String!): PublicUserType!
+}
