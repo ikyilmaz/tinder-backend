@@ -1,4 +1,4 @@
-import { IUser } from '../modules/user/user.interface';
+import { IUser } from '../shared/interfaces/user.interface';
 
 // Request nesnesine bind ettiğim kullanıcının, tipini ekledim. Typescript kızmasın...
 declare module 'express' {

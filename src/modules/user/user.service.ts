@@ -5,7 +5,7 @@ import {
   UpdateUserInputType,
 } from './user.graphql';
 import { InjectModel } from '@nestjs/mongoose';
-import { IUser } from './user.interface';
+import { IUser } from '../../shared/interfaces/user.interface';
 import { Model } from 'mongoose';
 
 @Injectable()
