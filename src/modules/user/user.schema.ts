@@ -1,6 +1,7 @@
 import { Schema, SchemaTypes } from 'mongoose';
 import { IUser } from './user.interface';
 import * as bcrypt from 'bcryptjs';
+import { USER_ROLE } from './user.enum';
 
 const UserSchema = new Schema<IUser>(
   {
@@ -26,10 +27,10 @@ const UserSchema = new Schema<IUser>(
     role: {
       type: SchemaTypes.String,
       enum: {
-        values: ['admin', 'user'],
+        values: [USER_ROLE.admin, USER_ROLE.user],
         message: "field 'role' must be in \"'admin', 'user'\"",
       },
-      default: 'user',
+      default: USER_ROLE.user,
     },
   },
   {

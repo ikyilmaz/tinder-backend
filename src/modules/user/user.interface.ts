@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { USER_ROLE } from './user.enum';
 
 export interface IUser extends mongoose.Document {
   id: string;
@@ -16,7 +17,7 @@ export interface IUser extends mongoose.Document {
   password: string;
 
   // Rol
-  role: 'admin' | 'user';
+  role: USER_ROLE;
 
   // Oluşturulma Tarihi
   createdAt: Date;
