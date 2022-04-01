@@ -10,6 +10,8 @@ import { PubSub } from 'graphql-subscriptions';
 import { Inject, UseGuards } from '@nestjs/common';
 import { ParseMongoIdPipe } from 'src/pipes/parse-mongo-id.pipe';
 import { GqlAuthGuard } from 'src/guards/gql-auth.guard';
+import { RestrictToGuard } from 'src/guards/restrict-to.guard';
+import { Auth } from 'src/decorators/auth.decorator';
 // import { Auth } from '../../common/decorators/auth.decorator';
 
 @Resolver(() => PublicUserType)
@@ -20,16 +22,16 @@ export class UserResolver {
   ) {}
 
   @Query(() => [PublicUserType])
-  async users() {
+  async findUsers() {
     return this.usersService.getMany();
   }
 
   @Query(() => PublicUserType)
-  async user(@Args('data') data: GetUserInputType) {
+  async findOneUser(@Args('data') data: GetUserInputType) {
     return this.usersService.get(data);
   }
 
-  // @Auth({ roles: ['admin'] })
+  @Auth({ roles: ['admin'] })
   @Mutation(() => PublicUserType)
   async createUser(@Args('data') data: CreateUserInputType) {
     const user = await this.usersService.create(data);
@@ -37,20 +39,21 @@ export class UserResolver {
     return user;
   }
 
-  // @Auth({ roles: ['admin'] })
+  @Auth({ roles: ['admin'] })
   @Mutation(() => PublicUserType)
   async updateUser(@Args('data') data: UpdateUserInputType) {
     return this.usersService.update(data);
   }
 
-  // @Auth({ roles: ['admin'] })
+  @Auth({ roles: ['admin'] })
+  @UseGuards(GqlAuthGuard, RestrictToGuard)
   @Mutation(() => String)
   async deleteUser(@Args('id', ParseMongoIdPipe) id: string) {
     await this.usersService.delete(id);
     return 'OK';
   }
 
-  // @Auth({ roles: ['admin'] })
+  @Auth({ roles: ['admin'] })
   @Subscription(() => PublicUserType, {
     resolve: (payload) => payload,
   })
