@@ -3,24 +3,40 @@
 # ------------------------------------------------------
 
 type PublicUserType {
-  _id: ID!
+  id: ID!
   username: String!
 }
 
+type LoginReturnType {
+  token: String!
+  user: PublicUserType!
+}
+
+type RegisterReturnType {
+  token: String!
+  user: PublicUserType!
+}
+
 type Query {
-  sayHello: String!
   users: [PublicUserType!]!
   user(data: GetUserInputType!): PublicUserType!
+  login(data: LoginType!): LoginReturnType!
 }
 
 input GetUserInputType {
   _id: ID!
 }
 
+input LoginType {
+  username: String!
+  password: String!
+}
+
 type Mutation {
   createUser(data: CreateUserInputType!): PublicUserType!
   updateUser(data: UpdateUserInputType!): PublicUserType!
   deleteUser(id: String!): String!
+  register(data: RegisterType!): RegisterReturnType!
 }
 
 input CreateUserInputType {
@@ -31,6 +47,12 @@ input CreateUserInputType {
 input UpdateUserInputType {
   _id: ID!
   username: String
+}
+
+input RegisterType {
+  username: String!
+  password: String!
+  passwordConfirm: String!
 }
 
 type Subscription {
