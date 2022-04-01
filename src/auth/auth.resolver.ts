@@ -16,17 +16,23 @@ export class AuthResolver {
   constructor(private readonly authService: AuthService) {}
 
   @Auth()
-  @Query(() => PublicUserType)
+  @Query(() => PublicUserType, {
+    description: 'Giriş yapmış olan kullanıcının bilgileri...',
+  })
   async me(@CurrentUser() user: IUser) {
     return user;
   }
 
-  @Query(() => LoginReturnType)
+  @Query(() => LoginReturnType, {
+    description: 'Giriş yap',
+  })
   async login(@Args('data') data: LoginType) {
     return this.authService.login(data);
   }
 
-  @Mutation(() => RegisterReturnType)
+  @Mutation(() => RegisterReturnType, {
+    description: 'Kayıt ol',
+  })
   async register(
     @Args('data') data: RegisterType,
   ): Promise<RegisterReturnType> {

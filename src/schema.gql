@@ -24,7 +24,11 @@ type Query {
 
   """Verilen ID'ye sahip kullanıcıyı bulur..."""
   findOneUser(data: GetUserInputType!): PublicUserType!
+
+  """Giriş yapmış olan kullanıcının bilgileri..."""
   me: PublicUserType!
+
+  """Giriş yap"""
   login(data: LoginType!): LoginReturnType!
 }
 
@@ -47,6 +51,8 @@ type Mutation {
 
   """Kullanıcı siler. Rolüm admin değilse izin vermez."""
   deleteUser(id: String!): String!
+
+  """Kayıt ol"""
   register(data: RegisterType!): RegisterReturnType!
 }
 
