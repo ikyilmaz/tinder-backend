@@ -8,10 +8,10 @@ export interface IReaction extends mongoose.Document {
   type: REACTION_TYPE;
 
   // Reaksiyonu veren kişi
-  fromUserId: number;
+  fromUserId: mongoose.ObjectId;
 
   // Reaksiyonu alan kişi
-  toUserId: number;
+  toUserId: mongoose.ObjectId;
 
   // Oluşturulma Tarihi
   createdAt: Date;
