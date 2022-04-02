@@ -18,6 +18,14 @@ type RegisterReturnType {
   user: PublicUserType!
 }
 
+"""Reaksiyon dönüt tipi..."""
+type ReactionReturnType {
+  id: ID!
+  toUserId: ID!
+  fromUserId: ID!
+  type: String!
+}
+
 type Query {
   """Tüm kullanıcıları bulur..."""
   findUsers: [PublicUserType!]!
@@ -54,6 +62,7 @@ type Mutation {
 
   """Kayıt ol"""
   register(data: RegisterType!): RegisterReturnType!
+  like(data: ReactionInputType!): ReactionReturnType!
 }
 
 """Kullanıcı oluştururken kullanılacak giriş tipi..."""
@@ -72,6 +81,11 @@ input RegisterType {
   username: String!
   password: String!
   passwordConfirm: String!
+}
+
+"""Reaksiyon tipi..."""
+input ReactionInputType {
+  toUserId: ID!
 }
 
 type Subscription {
