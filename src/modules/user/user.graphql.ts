@@ -1,5 +1,5 @@
 import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
-import { IsAlpha, IsOptional, Length } from 'class-validator';
+import { IsAlpha, IsMongoId, IsOptional, Length } from 'class-validator';
 
 @ObjectType({
   description: 'Herkese açık kullanıcı tipi',
@@ -18,6 +18,7 @@ export class PublicUserType {
 })
 export class GetUserInputType {
   @Field(() => ID)
+  @IsMongoId()
   _id: string;
 }
 
@@ -40,6 +41,7 @@ export class CreateUserInputType {
 })
 export class UpdateUserInputType {
   @Field(() => ID, { nullable: false })
+  @IsMongoId()
   _id: string;
 
   @Field(() => String, { nullable: true })
