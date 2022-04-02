@@ -8,6 +8,7 @@ import { UserResolver } from './modules/user/user.resolver';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ReactionModule } from './modules/reaction/reaction.module';
+import { MatchModule } from './match/match.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { ReactionModule } from './modules/reaction/reaction.module';
     UserModule,
     AuthModule,
     ReactionModule,
+    MatchModule,
   ],
 })
 export class AppModule {}
