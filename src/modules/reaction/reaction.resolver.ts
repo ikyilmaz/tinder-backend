@@ -15,7 +15,24 @@ export class ReactionResolver {
     @Args('data') data: ReactionInputType,
     @CurrentUser() user: IUser,
   ) {
-    console.log(data);
     return this.reactionService.like(data.toUserId, user);
+  }
+
+  @Auth()
+  @Mutation(() => ReactionReturnType)
+  async superLike(
+    @Args('data') data: ReactionInputType,
+    @CurrentUser() user: IUser,
+  ) {
+    return this.reactionService.superLike(data.toUserId, user);
+  }
+
+  @Auth()
+  @Mutation(() => ReactionReturnType)
+  async dislike(
+    @Args('data') data: ReactionInputType,
+    @CurrentUser() user: IUser,
+  ) {
+    return this.reactionService.dislike(data.toUserId, user);
   }
 }
