@@ -63,6 +63,8 @@ type Mutation {
   """Kayıt ol"""
   register(data: RegisterType!): RegisterReturnType!
   like(data: ReactionInputType!): ReactionReturnType!
+  superLike(data: ReactionInputType!): ReactionReturnType!
+  dislike(data: ReactionInputType!): ReactionReturnType!
 }
 
 """Kullanıcı oluştururken kullanılacak giriş tipi..."""
