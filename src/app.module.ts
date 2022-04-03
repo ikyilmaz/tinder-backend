@@ -8,7 +8,7 @@ import { UserResolver } from './modules/user/user.resolver';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ReactionModule } from './modules/reaction/reaction.module';
-import { MatchModule } from './match/match.module';
+import { MatchModule } from './modules/match/match.module';
 
 @Module({
   imports: [
