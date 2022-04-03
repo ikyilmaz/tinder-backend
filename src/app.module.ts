@@ -4,7 +4,6 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { join } from 'path';
 import { MongooseModule } from '@nestjs/mongoose';
-import { UserResolver } from './modules/user/user.resolver';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ReactionModule } from './modules/reaction/reaction.module';
