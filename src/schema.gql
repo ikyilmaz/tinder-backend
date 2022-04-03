@@ -18,12 +18,10 @@ type RegisterReturnType {
   user: PublicUserType!
 }
 
-"""Reaksiyon dönüt tipi..."""
-type ReactionReturnType {
-  id: ID!
-  toUserId: ID!
-  fromUserId: ID!
-  type: String!
+"""Eşleşme dönüt tipi..."""
+type MatchReturnType {
+  matchId: ID!
+  user: PublicUserType!
 }
 
 type Query {
@@ -38,6 +36,7 @@ type Query {
 
   """Giriş yap"""
   login(data: LoginType!): LoginReturnType!
+  matches: [MatchReturnType!]!
 }
 
 """ID'sine bağlı kullanıcı sorgusu yaparken kullanılacak giriş tipi..."""
@@ -62,9 +61,15 @@ type Mutation {
 
   """Kayıt ol"""
   register(data: RegisterType!): RegisterReturnType!
-  like(data: ReactionInputType!): ReactionReturnType!
-  superLike(data: ReactionInputType!): ReactionReturnType!
-  dislike(data: ReactionInputType!): ReactionReturnType!
+
+  """Beğenmek için"""
+  like(data: ReactionInputType!): String!
+
+  """Süper bir şekilde beğenmek için. İnanılmaz süper..."""
+  superLike(data: ReactionInputType!): String!
+
+  """Beğenmemek için :("""
+  dislike(data: ReactionInputType!): String!
 }
 
 """Kullanıcı oluştururken kullanılacak giriş tipi..."""
