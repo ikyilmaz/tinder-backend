@@ -2,6 +2,7 @@ import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { ModelNameEnum } from 'src/shared/constants/model-name.constant';
+import { MatchService } from '../match/match.service';
 import { IUser } from '../user/user.interface';
 import { REACTION_TYPE } from './reaction.enum';
 import { IReaction } from './reaction.interface';
@@ -11,56 +12,77 @@ export class ReactionService {
   constructor(
     @InjectModel(ModelNameEnum.REACTION)
     readonly reactionModel: mongoose.Model<IReaction>,
+    private readonly matchService: MatchService,
   ) {}
 
+  // Biri beğenilmediğinde kullanılacak fonksiyon
   async dislike(toUserId: string, currentUser: IUser) {
-    const dislike = await this.reactionModel.create({
+    // Beğenmeme reaksiyonu
+    await this.reactionModel.create({
       toUserId,
       fromUserId: currentUser.id,
       type: REACTION_TYPE.DISLIKE,
     });
-
-    return dislike;
   }
 
-  //   async like(toUserId: number, currentUser: User): Promise<Reaction | Match> {
+  // Biri beğenilince kullanılacak fonksiyon
   async like(toUserId: string, user: IUser) {
+    // Öncelikle bu beğeneceği kişi onu daha önce beğenmiş mi? Ona bak...
     const isMatch = await this.isMatch(user.id, toUserId);
+
+    // Daha önce beğenilmiş mi?
     if (isMatch) {
-      // const match = this.matchService.createMatch(toUserId, currentUser.id); // notify order
-      // this.reactionModel.findByIdAndRemove(isMatch.id); //remove related reaction once match is created
-      // return match;
+      // Yeni bir match oluştur...
+      const match = await this.matchService.createMatch(toUserId, user.id);
+
+      // Rekasiyonu silelim. Match oluştu çünkü...
+      await this.reactionModel.findOneAndRemove({
+        fromUserId: toUserId,
+      });
+
+      // Matchi döndür
+      return match;
     }
-    const like = await this.reactionModel.create({
+
+    // Eğer daha önce bu kişi tarafından beğenilmediyse normal bir şekilde reaksiyon oluştur...
+    await this.reactionModel.create({
       toUserId,
       fromUserId: user.id,
       type: REACTION_TYPE.LIKE,
     });
-
-    // TODO: Conflict Exception
-    return like;
   }
 
+  // Yukarıdaki like fonksiyonu için geçerli olan her şey burada da geçerli
   async superLike(toUserId: string, user: IUser) {
+    // Öncelikle bu beğeneceği kişi onu daha önce beğenmiş mi? Ona bak...
     const isMatch = await this.isMatch(user.id, toUserId);
+
+    // Daha önce beğenilmiş mi?
     if (isMatch) {
-      // const match = this.matchService.createMatch(toUserId, currentUser.id); // notify order
-      // this.reactionModel.findByIdAndRemove(isMatch.id); //remove related reaction once match is created
-      // return match;
+      // Yeni bir match oluştur...
+      const match = await this.matchService.createMatch(toUserId, user.id);
+
+      // Rekasiyonu silelim. Match oluştu çünkü...
+      await this.reactionModel.findOneAndRemove({
+        fromUserId: toUserId,
+      });
+
+      // Matchi döndür
+      return match;
     }
-    const like = await this.reactionModel.create({
+
+    // Eğer daha önce bu kişi tarafından beğenilmediyse normal bir şekilde reaksiyon oluştur...
+    await this.reactionModel.create({
       toUserId,
       fromUserId: user.id,
-      type: REACTION_TYPE.SUPERLIKE,
+      type: REACTION_TYPE.SUPERLIKE, // Bu hariç
     });
-
-    // TODO: Conflict Exception
-    return like;
   }
 
+  // Match mi değil mi?
   async isMatch(fromUserId: string, toUserId: string) {
-    // true if toUser liked me first
-    return await this.reactionModel.findOne({
+    // Bu kişi daha önce bizi beğenmiş mi?
+    const match = await this.reactionModel.findOne({
       where: {
         fromUserId: toUserId,
         toUserId: fromUserId,
@@ -69,5 +91,7 @@ export class ReactionService {
         },
       },
     });
+
+    return match;
   }
 }

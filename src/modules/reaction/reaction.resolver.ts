@@ -10,29 +10,37 @@ export class ReactionResolver {
   constructor(private readonly reactionService: ReactionService) {}
 
   @Auth()
-  @Mutation(() => ReactionReturnType)
+  @Mutation(() => String, { description: 'Beğenmek için' })
   async like(
     @Args('data') data: ReactionInputType,
     @CurrentUser() user: IUser,
   ) {
-    return this.reactionService.like(data.toUserId, user);
+    await this.reactionService.like(data.toUserId, user);
+
+    return 'OK';
   }
 
   @Auth()
-  @Mutation(() => ReactionReturnType)
+  @Mutation(() => String, {
+    description: 'Süper bir şekilde beğenmek için. İnanılmaz süper...',
+  })
   async superLike(
     @Args('data') data: ReactionInputType,
     @CurrentUser() user: IUser,
   ) {
-    return this.reactionService.superLike(data.toUserId, user);
+    await this.reactionService.superLike(data.toUserId, user);
+
+    return 'OK';
   }
 
   @Auth()
-  @Mutation(() => ReactionReturnType)
+  @Mutation(() => String, { description: 'Beğenmemek için :(' })
   async dislike(
     @Args('data') data: ReactionInputType,
     @CurrentUser() user: IUser,
   ) {
-    return this.reactionService.dislike(data.toUserId, user);
+    await this.reactionService.dislike(data.toUserId, user);
+
+    return 'OK';
   }
 }
