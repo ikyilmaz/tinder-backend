@@ -13,6 +13,16 @@
 - [MongoDB](https://www.mongodb.com/)
 - [Jwt](https://jwt.io/)
 
+## Todo
+
+- [x] Authentication/authorization
+- [x] like/dislike
+- [x] create match
+- [ ] messages
+- [ ] pagination
+- [ ] integrate testing
+- [ ] ...
+
 ## Installation
 
 ```bash
