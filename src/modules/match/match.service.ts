@@ -25,7 +25,7 @@ export class MatchService {
 
     // TODO: Conflict Exception
 
-    this.pubSub.publish('matchAdded', { matchAdded: match });
+    await this.pubSub.publish('matchAdded', { matchAdded: match });
     return match;
   }
 
