@@ -32,6 +32,7 @@ import { MatchModule } from './modules/match/match.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      installSubscriptionHandlers: true,
     }),
     UserModule,
     AuthModule,
