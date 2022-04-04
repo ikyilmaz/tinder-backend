@@ -8,7 +8,7 @@ import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ReactionModule } from './modules/reaction/reaction.module';
 import { MatchModule } from './modules/match/match.module';
-import { MessageModule } from './message/message.module';
+import { MessageModule } from './modules/message/message.module';
 
 @Module({
   imports: [
