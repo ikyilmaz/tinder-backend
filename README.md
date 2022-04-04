@@ -15,9 +15,9 @@ Comment lines and descriptions are in Turkish.
 - [GraphQL](https://graphql.org/)
 - [MongoDB](https://www.mongodb.com/)
 - [Jwt](https://jwt.io/)
-- [class-validator]
-- [bcryptjs]
-- [passport]
+- class-validator
+- bcryptjs
+- passport
 
 ## Todo
 
