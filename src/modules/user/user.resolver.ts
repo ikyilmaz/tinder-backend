@@ -67,7 +67,7 @@ export class UserResolver {
     description:
       'Kullanıcı oluşturma olayını takibe alır. Her kullanıcı oluşturulduğunda haberim olur. Rolüm admin değilse izin vermez.',
   })
-  async userCreated(@Args('token') token: string) {
+  async userCreated() {
     return this.$pubSub.asyncIterator<PublicUserType>('on-user-created');
   }
 }
