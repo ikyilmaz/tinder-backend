@@ -18,6 +18,7 @@
 - [x] Authentication/authorization
 - [x] like/dislike
 - [x] create match
+- [ ] match oluştuktan sonra beğeniye izin verme
 - [ ] messages
 - [ ] pagination
 - [ ] integrate testing
