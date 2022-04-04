@@ -99,5 +99,6 @@ type Subscription {
   """
   Kullanıcı oluşturma olayını takibe alır. Her kullanıcı oluşturulduğunda haberim olur. Rolüm admin değilse izin vermez.
   """
-  userCreated(token: String!): PublicUserType!
+  userCreated: PublicUserType!
+  matchAdded(token: String!): MatchReturnType!
 }
