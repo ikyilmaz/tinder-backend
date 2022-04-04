@@ -23,7 +23,7 @@ export class AuthResolver {
     return user;
   }
 
-  @Query(() => LoginReturnType, {
+  @Mutation(() => LoginReturnType, {
     description: 'Giriş yap',
   })
   async login(@Args('data') data: LoginType) {
