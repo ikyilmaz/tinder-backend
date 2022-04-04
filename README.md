@@ -4,6 +4,9 @@
 
 ## Description
 
+Tinder App basic back-end clone with Nodejs.
+Comment lines and descriptions are in Turkish.
+
 #### Technologies
 
 - [Nest](https://github.com/nestjs/nest)
@@ -12,14 +15,18 @@
 - [GraphQL](https://graphql.org/)
 - [MongoDB](https://www.mongodb.com/)
 - [Jwt](https://jwt.io/)
+- [class-validator]
+- [bcryptjs]
+- [passport]
 
 ## Todo
 
 - [x] Authentication/authorization
 - [x] like/dislike
 - [x] create match
+- [x] messages
 - [ ] match oluştuktan sonra beğeniye izin verme
-- [ ] messages
+- [ ] subscriptions
 - [ ] pagination
 - [ ] integrate testing
 - [ ] ...
